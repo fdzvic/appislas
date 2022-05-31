@@ -1,6 +1,5 @@
 import 'package:appislas/algorithmLogic.dart';
 import 'package:appislas/provider.dart';
-import 'package:appislas/providerColor.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,15 +10,17 @@ class MatrixView extends StatefulWidget {
 }
 
 class _MatrixViewState extends State<MatrixView> {
+
+   
+
   @override
   Widget build(BuildContext context) {
+
     final dimesion = Provider.of<Dimension>(context);
-    final colorProvider = Provider.of<ColorContainerProvaider>(context);
     final algorithm = AlgorithmLogic();
     List<List<int>> matrix = algorithm.crearMatriz(dimesion.dimension);
     algorithm.recorrerMatriz(dimesion.dimension, matrix, algorithm.islas);
-    print(algorithm.islas.length);
-    
+    dimesion.islas = algorithm.islas.length;
     List nume = [];
 
     llenarLista(){
@@ -52,6 +53,7 @@ class _MatrixViewState extends State<MatrixView> {
 
     return Center(
       child: GridView.builder(
+        
         shrinkWrap: true,
         itemCount: dimesion.dimension * dimesion.dimension,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -64,6 +66,15 @@ class _MatrixViewState extends State<MatrixView> {
                       width: 30,
                       height: 30,
                       color: colorElegido(),
+                      child: MaterialButton(
+                        child: Text('$index'),
+                        onPressed: (){
+                          print(nume);
+                          (nume[index] == 0) ? nume[index] = 1 : nume[index] = 0; 
+                          print(nume);
+                          setState(() {
+                          });
+                        }),
                       ),
                     );      
         },

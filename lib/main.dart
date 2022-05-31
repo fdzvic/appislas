@@ -1,6 +1,5 @@
 import 'package:appislas/aplication.dart';
 import 'package:appislas/provider.dart';
-import 'package:appislas/providerColor.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +11,6 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => Dimension()),
-        ChangeNotifierProvider(create: (context) => ColorContainerProvaider()),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

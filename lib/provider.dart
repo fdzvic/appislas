@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class Dimension with ChangeNotifier {
   int _dimension = 1;
+  int islas = 0;
+  List<List<int>> matrix = [];
   
   int get dimension{
     return _dimension;
@@ -11,4 +13,6 @@ class Dimension with ChangeNotifier {
     this._dimension = numero;
     notifyListeners();
   }
+
 }
+

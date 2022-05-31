@@ -2,14 +2,20 @@ import 'package:appislas/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CardIn extends StatelessWidget {
+class CardIn extends StatefulWidget {
   
 
+  @override
+  State<CardIn> createState() => _CardInState();
+}
+
+class _CardInState extends State<CardIn> {
   final textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final dimesion = Provider.of<Dimension>(context);
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -44,7 +50,13 @@ class CardIn extends StatelessWidget {
               onPressed: (){
                 dimesion.dimension = int.parse(textController.text);
               }, 
-              child: const Text('Crear', style: TextStyle(color: Colors.white),),)
+              child: const Text('Crear', style: TextStyle(color: Colors.white),),),
+
+            Container(
+              width: 100,
+              height: 100,
+              child: Text('numero de islas ${dimesion.islas}'),
+            )
           ],
         ),
       ),
