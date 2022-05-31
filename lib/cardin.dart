@@ -49,13 +49,18 @@ class _CardInState extends State<CardIn> {
               color: Colors.blue,
               onPressed: (){
                 dimesion.dimension = int.parse(textController.text);
+                dimesion.a = 0;
+                dimesion.crearMatriz();
+                dimesion.llenarLista();
+                print('numero de islas ${dimesion.islas}');
+                print('lista de datos ${dimesion.datos}');
               }, 
               child: const Text('Crear', style: TextStyle(color: Colors.white),),),
 
             Container(
               width: 100,
               height: 100,
-              child: Text('numero de islas ${dimesion.islas}'),
+              child: Text('numero de islas ${dimesion.islas}', textAlign: TextAlign.center),
             )
           ],
         ),

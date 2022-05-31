@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:appislas/algorithmLogic.dart';
 import 'package:appislas/provider.dart';
 import 'package:flutter/material.dart';
@@ -11,53 +13,18 @@ class MatrixView extends StatefulWidget {
 
 class _MatrixViewState extends State<MatrixView> {
 
-   
-
   @override
   Widget build(BuildContext context) {
 
-    final dimesion = Provider.of<Dimension>(context);
-    final algorithm = AlgorithmLogic();
-    List<List<int>> matrix = algorithm.crearMatriz(dimesion.dimension);
-    algorithm.recorrerMatriz(dimesion.dimension, matrix, algorithm.islas);
-    dimesion.islas = algorithm.islas.length;
-    List nume = [];
-
-    llenarLista(){
-    for (int i = 0; i < dimesion.dimension; i++) {
-      for (int j = 0; j < dimesion.dimension; j++) {
-        nume.add(matrix[i][j]);
-      } 
-    }
-    print('lista de la matriz $nume');
-    }
-    int a = 0;
-    colorElegido(){
-      for (int i = a; i < dimesion.dimension*dimesion.dimension; i++) {
-        int valor = nume[i];
-        if(valor == 1){
-          a++;
-          return Colors.yellow;
-        }else{
-          a++;
-          return Colors.blue;
-        }        
-      }
-      return Colors.blue;
-    }
-
-    setState(() {
-      llenarLista();
-    });
- 
+    final dimension = Provider.of<Dimension>(context);
 
     return Center(
       child: GridView.builder(
         
         shrinkWrap: true,
-        itemCount: dimesion.dimension * dimesion.dimension,
+        itemCount: dimension.dimension * dimension.dimension,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: dimesion.dimension,
+          crossAxisCount: dimension.dimension,
           ) , 
         itemBuilder: (context, index){
               return Padding(
@@ -65,13 +32,13 @@ class _MatrixViewState extends State<MatrixView> {
                   child: Container(
                       width: 30,
                       height: 30,
-                      color: colorElegido(),
+                      color: dimension.colorElegido(),
                       child: MaterialButton(
                         child: Text('$index'),
                         onPressed: (){
-                          print(nume);
-                          (nume[index] == 0) ? nume[index] = 1 : nume[index] = 0; 
-                          print(nume);
+                          print(dimension.datos);
+                          (dimension.datos[index] == 0) ? dimension.datos[index] = 1 : dimension.datos[index] = 0; 
+                          print(dimension.datos);
                           setState(() {
                           });
                         }),
