@@ -1,5 +1,5 @@
 import 'package:appislas/aplication.dart';
-import 'package:appislas/provider.dart';
+import 'package:appislas/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
-import 'package:appislas/algorithmLogic.dart';
-import 'package:appislas/provider.dart';
+import 'package:appislas/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +9,8 @@ class MatrixView extends StatefulWidget {
 }
 
 class _MatrixViewState extends State<MatrixView> {
+
+  List<List<int>> lista = [[0]];
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +35,21 @@ class _MatrixViewState extends State<MatrixView> {
                       child: MaterialButton(
                         child: Text('$index'),
                         onPressed: (){
-                          print(dimension.datos);
                           (dimension.datos[index] == 0) ? dimension.datos[index] = 1 : dimension.datos[index] = 0; 
-                          print(dimension.datos);
+                          dimension.a = 0;
+                          int c = 0;
+                          lista = List.generate(dimension.dimension, (i) 
+                          => List.generate(dimension.dimension, (i){
+                            for(int b = c; b < dimension.dimension*dimension.dimension; b++){
+                              c++;
+                              return dimension.datos[b];
+                             }
+                              return 0;
+                            }
+                          ));
+                          print(lista);
+                          dimension.recorrerMatriz(lista);
+                          lista.clear();
                           setState(() {
                           });
                         }),

@@ -1,5 +1,5 @@
-import 'package:appislas/cardin.dart';
-import 'package:appislas/matrixView.dart';
+import 'package:appislas/shared/widgets/cardin.dart';
+import 'package:appislas/shared/widgets/matrixView.dart';
 import 'package:flutter/material.dart';
 
 class Aplication extends StatefulWidget {

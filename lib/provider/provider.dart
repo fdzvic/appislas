@@ -19,12 +19,19 @@ class Dimension with ChangeNotifier {
   }
 
   crearMatriz(){
-    islas = 0;
     matrix.clear();
+    islas = 0;
     algorithm.islas.clear();
     matrix = algorithm.crearMatriz(_dimension);
-    algorithm.recorrerMatriz(_dimension, matrix, algorithm.islas);
+    recorrerMatriz(matrix);
+    
+  }
+  recorrerMatriz(List<List<int>> matrixxz){
+    islas = 0;
+    algorithm.recorrerMatriz(_dimension, matrixxz, algorithm.islas);
     islas = algorithm.islas.length;
+    print('las islas $islas');
+    notifyListeners();
   }
   
   llenarLista(){
